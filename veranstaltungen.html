@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-17RM28MBR9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-17RM28MBR9');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veranstaltungen – Vino Weinbar Bassum</title>
+    <link rel="icon" href="favicon-32x32.png" type="image/x-icon">
+    <meta name="description" content="Veranstaltungen in der Vino Weinbar Bassum – Lesungen, Musikabende und besondere Genussmomente. Aktuelle Termine auf einen Blick.">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4A0E0E;
+            --bg: #FAF9F6;
+            --text: #2D2D2D;
+            --accent: #D4AF37;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+        }
+
+        /* Navigation */
+        nav {
+            padding: 20px;
+            text-align: center;
+            background: white;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo { font-size: 1.5rem; letter-spacing: 2px; font-weight: 600; color: var(--primary); text-decoration: none; }
+        .nav-links { margin-top: 10px; }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin: 0 12px;
+            padding-bottom: 3px;
+        }
+        .nav-links a.active { color: var(--primary); border-bottom: 1px solid var(--accent); }
+
+        /* Seitenkopf */
+        .page-header {
+            padding: 60px 20px 30px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .page-header h1 { font-size: 2.2rem; margin-bottom: 12px; }
+        .page-header p { font-size: 1.05rem; color: #555; }
+
+        /* Sektionen */
+        section { padding: 20px 25px 40px; max-width: 800px; margin: 0 auto; }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            border-bottom: 1px solid var(--accent);
+            display: inline-block;
+            margin-bottom: 30px;
+            padding-bottom: 5px;
+            font-size: 1.6rem;
+        }
+
+        /* Event-Karte */
+        .event-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+            margin-bottom: 35px;
+        }
+        .event-card.past { opacity: 0.7; }
+
+        .event-media {
+            display: block;
+            background: #f0efec;
+            text-align: center;
+            line-height: 0;
+        }
+        .event-media img {
+            max-width: 100%;
+            max-height: 520px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .event-body { padding: 28px; }
+
+        .event-datebadge {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 4px;
+            text-align: center;
+            padding: 8px 14px;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        .event-datebadge .day { font-family: 'Playfair Display', serif; font-size: 1.4rem; display: block; }
+        .event-datebadge .mon { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
+
+        .event-title { font-size: 1.5rem; margin-bottom: 4px; }
+        .event-subtitle { font-size: 0.95rem; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 18px; font-weight: 400; }
+
+        .event-desc { margin-bottom: 22px; }
+
+        .event-meta { border-top: 1px dotted #ccc; padding-top: 15px; }
+        .meta-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 7px 0;
+            border-bottom: 1px dotted #eee;
+            font-size: 0.95rem;
+        }
+        .meta-row:last-child { border-bottom: none; }
+        .meta-row .label { color: #888; }
+        .meta-row .value { text-align: right; font-weight: 400; }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 13px 26px;
+            text-decoration: none;
+            border-radius: 2px;
+            font-weight: bold;
+            margin-top: 22px;
+            transition: opacity 0.3s;
+        }
+        .btn:hover { opacity: 0.85; }
+
+        .empty-note {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 35px;
+            text-align: center;
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            margin-top: 30px;
+        }
+        .footer-nav { margin-top: 20px; }
+        .footer-nav a { color: #888; text-decoration: none; margin: 0 10px; }
+
+        /* Desktop */
+        @media (min-width: 768px) {
+            .page-header { padding: 90px 20px 40px; }
+            .page-header h1 { font-size: 3rem; }
+            .event-body { padding: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo">VINO BASSUM</a>
+    <div class="nav-links">
+        <a href="index.html">Startseite</a>
+        <a href="veranstaltungen.html" class="active">Veranstaltungen</a>
+    </div>
+</nav>
+
+<div class="page-header">
+    <h1>Veranstaltungen</h1>
+    <p>Lesungen, Musikabende und besondere Genussmomente in der Vino Weinbar.</p>
+</div>
+
+<!-- ============================================================= -->
+<!--  NEUE VERANSTALTUNG HINZUFÜGEN:                                -->
+<!--  1. Bild (Flyer) in den Ordner "events/" hochladen.           -->
+<!--     Empfehlung: als .jpg, Breite max. ~1000px, unter ~300 KB. -->
+<!--  2. Unten in der Liste "veranstaltungen" einen neuen Block     -->
+<!--     nach dem Muster einfügen. Nur "datum" und "titel" sind     -->
+<!--     Pflicht – alle anderen Felder sind optional (leer lassen   -->
+<!--     oder Zeile löschen, wenn nicht benötigt).                  -->
+<!--  Die Seite sortiert automatisch in "Kommende" / "Vergangene"   -->
+<!--  und blendet Vergangenes nach unten.                           -->
+<!-- ============================================================= -->
+
+<section>
+    <h2 class="section-title">Kommende Veranstaltungen</h2>
+    <div id="kommende"></div>
+</section>
+
+<section id="vergangene-sektion" style="display:none;">
+    <h2 class="section-title">Vergangene Veranstaltungen</h2>
+    <div id="vergangene"></div>
+</section>
+
+<footer>
+    <p><strong>Vino Weinbar Bassum</strong><br>
+    Sulinger Straße 19A | 27211 Bassum<br>
+    Tel: Elfi 0163 4009199 oder Rita 0152 09509603 </p>
+
+    <div class="footer-nav">
+        <a href="Impressum.html">Impressum</a> |
+        <a href="Datenschutz.html">Datenschutz</a>
+    </div>
+    <p style="margin-top: 20px; color: #ccc; font-size: 0.7rem;">&copy; 2026 Vino Weinbar. Alle Rechte vorbehalten.</p>
+</footer>
+
+<script>
+/* =====================================================================
+   HIER DIE VERANSTALTUNGEN PFLEGEN
+   ---------------------------------------------------------------------
+   Jedes Event ist ein Block { ... }. Reihenfolge egal – wird nach
+   Datum automatisch sortiert. Felder:
+     datum        Pflicht, Format "JJJJ-MM-TT" (z. B. "2026-11-05")
+     uhrzeit      z. B. "18:00 Uhr"
+     titel        Pflicht
+     untertitel   kurze Einordnung, z. B. "Musikalische Eventlesung"
+     bild         Pfad zum Flyer, z. B. "events/mein-flyer.jpg" (oder "")
+     beschreibung Fließtext
+     preis        z. B. "36,00 € pro Person"
+     dresscode    z. B. "Business-elegant"
+     reservierung z. B. "Elfi 0160 90560321 · Rita 0152 52583496"
+     link         optionaler Button-Link (PDF/Tickets), sonst ""
+   ===================================================================== */
+const veranstaltungen = [
+  {
+    datum: "2026-11-05",
+    uhrzeit: "18:00 Uhr",
+    titel: "Liebe ist ALLES und andere grossARTigkeiten",
+    untertitel: "Musikalische Eventlesung",
+    bild: "events/liebe-ist-alles-2026-11-05.jpg",
+    beschreibung: "Ein stimmungsvoller Abend aus dem gleichnamigen ARTSignatur PRÄSENTband – Bilder, Gedichte und Geschichte. Anett Hänsch liest mit Lyrikherz: Emotionen für Generationen. Issa Taleb begleitet mit violinistischen Impressionen. Freuen Sie sich auf Lesung, musikalische Begleitung und eine kulinarische Kleinigkeit.",
+    preis: "36,00 € pro Person",
+    dresscode: "Business-elegant",
+    reservierung: "Elfi 0160 90560321 · Rita 0152 52583496",
+    link: ""
+  }
+  // Nächstes Event hier anfügen (mit Komma vor der geschweiften Klammer):
+  // ,{
+  //   datum: "2026-12-06",
+  //   uhrzeit: "17:00 Uhr",
+  //   titel: "Adventlicher Weinabend",
+  //   untertitel: "",
+  //   bild: "events/advent-2026.jpg",
+  //   beschreibung: "...",
+  //   preis: "",
+  //   dresscode: "",
+  //   reservierung: "Elfi 0163 4009199 · Rita 0152 09509603",
+  //   link: ""
+  // }
+];
+
+/* ------- ab hier nichts mehr ändern nötig ------- */
+
+const MONATE = ["Jan","Feb","März","Apr","Mai","Juni","Juli","Aug","Sep","Okt","Nov","Dez"];
+
+function parseDatum(s) {
+  const [j,m,t] = s.split("-").map(Number);
+  return new Date(j, m - 1, t);
+}
+function langesDatum(d) {
+  return d.toLocaleDateString("de-DE", { day: "numeric", month: "long", year: "numeric" });
+}
+
+function metaRow(label, value) {
+  if (!value) return "";
+  return '<div class="meta-row"><span class="label">' + label + '</span><span class="value">' + value + '</span></div>';
+}
+
+function renderCard(ev, istVergangen) {
+  const d = parseDatum(ev.datum);
+  let html = '<article class="event-card' + (istVergangen ? ' past' : '') + '">';
+
+  if (ev.bild) {
+    html += '<a class="event-media" href="' + ev.bild + '" target="_blank" rel="noopener" title="Flyer in voller Größe öffnen">'
+          + '<img src="' + ev.bild + '" alt="Flyer: ' + ev.titel + '" loading="lazy"></a>';
+  }
+
+  html += '<div class="event-body">';
+  html += '<div class="event-datebadge"><span class="day">' + d.getDate() + '</span>'
+        + '<span class="mon">' + MONATE[d.getMonth()] + ' ' + d.getFullYear() + '</span></div>';
+  html += '<h3 class="event-title">' + ev.titel + '</h3>';
+  if (ev.untertitel) html += '<div class="event-subtitle">' + ev.untertitel + '</div>';
+  if (ev.beschreibung) html += '<p class="event-desc">' + ev.beschreibung + '</p>';
+
+  html += '<div class="event-meta">';
+  html += metaRow("Datum", langesDatum(d) + (ev.uhrzeit ? ", " + ev.uhrzeit : ""));
+  html += metaRow("Ort", "Vino Weinbar, Sulinger Straße 19A, Bassum");
+  html += metaRow("Eintritt", ev.preis);
+  html += metaRow("Dresscode", ev.dresscode);
+  html += metaRow("Reservierung", ev.reservierung);
+  html += '</div>';
+
+  if (ev.link) html += '<a class="btn" href="' + ev.link + '" target="_blank" rel="noopener">Mehr erfahren</a>';
+
+  html += '</div></article>';
+  return html;
+}
+
+(function init() {
+  const heute = new Date();
+  heute.setHours(0,0,0,0);
+
+  const kommende = veranstaltungen
+    .filter(ev => parseDatum(ev.datum) >= heute)
+    .sort((a,b) => parseDatum(a.datum) - parseDatum(b.datum));
+
+  const vergangene = veranstaltungen
+    .filter(ev => parseDatum(ev.datum) < heute)
+    .sort((a,b) => parseDatum(b.datum) - parseDatum(a.datum));
+
+  const elKommende = document.getElementById("kommende");
+  if (kommende.length) {
+    elKommende.innerHTML = kommende.map(ev => renderCard(ev, false)).join("");
+  } else {
+    elKommende.innerHTML = '<div class="empty-note">Aktuell sind keine Veranstaltungen geplant. '
+      + 'Folgen Sie uns auf Instagram oder Facebook – dort erfahren Sie neue Termine zuerst.</div>';
+  }
+
+  if (vergangene.length) {
+    document.getElementById("vergangene-sektion").style.display = "block";
+    document.getElementById("vergangene").innerHTML = vergangene.map(ev => renderCard(ev, true)).join("");
+  }
+
+  // Strukturierte Daten (schema.org) für Google – nur kommende Events
+  if (kommende.length) {
+    const ld = kommende.map(ev => ({
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": ev.titel,
+      "startDate": ev.datum,
+      "description": ev.beschreibung || ev.untertitel || ev.titel,
+      "image": ev.bild || undefined,
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Vino Weinbar Bassum",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Sulinger Straße 19A",
+          "postalCode": "27211",
+          "addressLocality": "Bassum",
+          "addressCountry": "DE"
+        }
+      }
+    }));
+    const s = document.createElement("script");
+    s.type = "application/ld+json";
+    s.textContent = JSON.stringify(ld);
+    document.head.appendChild(s);
+  }
+})();
+</script>
+
+</body>
+</html>
