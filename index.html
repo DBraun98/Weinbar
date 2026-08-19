@@ -51,6 +51,18 @@
 
         .logo { font-size: 1.5rem; letter-spacing: 2px; font-weight: 600; color: var(--primary); text-decoration: none; }
 
+        /* Navigationslinks */
+        .nav-links { margin-top: 10px; }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin: 0 12px;
+            padding-bottom: 3px;
+        }
+        .nav-links a.active { color: var(--primary); border-bottom: 1px solid var(--accent); }
+
         /* Hero Section */
         .hero {
             padding: 60px 20px;
@@ -135,7 +147,11 @@
 <body>
 
 <nav>
-    <a href="#" class="logo">VINO BASSUM</a>
+    <a href="index.html" class="logo">VINO BASSUM</a>
+    <div class="nav-links">
+        <a href="index.html" class="active">Startseite</a>
+        <a href="veranstaltungen.html">Veranstaltungen</a>
+    </div>
 </nav>
 
 <div class="hero">
@@ -203,13 +219,3 @@ Persönliche Aufmerksamkeit, herzliche Gastfreundschaft und die Freude am bewuss
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
