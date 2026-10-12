@@ -35,7 +35,7 @@
             --bg: #FAF9F6;
             --text: #2D2D2D;
             --accent: #D4AF37;
-            --wartezeit: 2400ms;
+            --wartezeit: 10000ms;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -239,7 +239,7 @@
     (function () {
         var link = document.getElementById('weiter');
         var ziel = link.href;
-        var wartezeit = 2400; // gleich lang wie --wartezeit im CSS
+        var wartezeit = 10000; // gleich lang wie --wartezeit im CSS
         var erledigt = false;
 
         function weiter() {
