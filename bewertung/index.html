@@ -7,7 +7,6 @@
     <meta name="description" content="Bewerten Sie die Vino Weinbar Bassum auf Google.">
     <!-- Diese Seite ist nur für den QR-Code gedacht und soll nicht in Suchmaschinen auftauchen -->
     <meta name="robots" content="noindex, follow">
-    <meta name="theme-color" content="#4A0E0E">
     <link rel="icon" href="/favicon-32x32.png" type="image/png">
 
     <!-- Schriften liegen auf dem eigenen Server: keine Verbindung zu Google Fonts, kein Cookie, kein Tracking -->
@@ -23,13 +22,6 @@
             src: url('/bewertung/playfair-display-latin-600-normal.woff2') format('woff2');
         }
         @font-face {
-            font-family: 'Playfair Display';
-            font-style: italic;
-            font-weight: 400;
-            font-display: swap;
-            src: url('/bewertung/playfair-display-latin-400-italic.woff2') format('woff2');
-        }
-        @font-face {
             font-family: 'Inter';
             font-style: normal;
             font-weight: 400;
@@ -37,160 +29,153 @@
             src: url('/bewertung/inter-latin-400-normal.woff2') format('woff2');
         }
 
-        /* Farben wie auf der Hauptseite, hier als dunkle Abendvariante */
+        /* Farben und Abstände wie auf der Startseite */
         :root {
-            --wein: #4A0E0E;
-            --creme: #FAF9F6;
-            --gold: #D4AF37;
-            --creme-gedaempft: #CDBDBA;
+            --primary: #4A0E0E;
+            --bg: #FAF9F6;
+            --text: #2D2D2D;
+            --accent: #D4AF37;
             --wartezeit: 2400ms;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        html { background: var(--wein); }
-
         body {
-            min-height: 100vh;
-            min-height: 100svh;
-            display: flex;
-            flex-direction: column;
-            background: var(--wein);
-            color: var(--creme);
-            font-family: 'Inter', system-ui, sans-serif;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        main {
-            flex: 1;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 48px 24px 32px;
-        }
-
-        .inhalt {
-            width: 100%;
-            max-width: 26rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .logo {
-            display: block;
-            width: 168px;
-            height: auto;
-            margin-bottom: 44px;
         }
 
         h1 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-weight: 600;
-            font-size: 2.15rem;
-            line-height: 1.15;
-            letter-spacing: 0.005em;
-            text-wrap: balance;
-            margin-bottom: 16px;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
         }
 
-        .text {
-            font-size: 1.05rem;
-            color: var(--creme-gedaempft);
-            max-width: 22rem;
-            text-wrap: pretty;
-            margin-bottom: 36px;
+        /* Navigation wie Startseite */
+        nav {
+            padding: 20px;
+            text-align: center;
+            background: white;
+            border-bottom: 1px solid #eee;
+        }
+        .logo { font-size: 1.5rem; letter-spacing: 2px; font-weight: 600; color: var(--primary); text-decoration: none; }
+        .nav-links { margin-top: 10px; }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin: 0 12px;
+            padding-bottom: 3px;
         }
 
-        .knopf {
+        main { flex: 1; }
+
+        /* Kopfbereich wie bei "Veranstaltungen" */
+        .page-header {
+            padding: 50px 20px 25px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .page-header h1 { font-size: 2.2rem; line-height: 1.2; margin-bottom: 12px; }
+        .page-header p { font-size: 1.05rem; color: #555; max-width: 30rem; margin: 0 auto; }
+
+        section { padding: 10px 25px 50px; max-width: 800px; margin: 0 auto; }
+
+        /* Weiße Box wie bei den Öffnungszeiten */
+        .box {
+            background: white;
+            padding: 35px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        /* Knopf wie "Weinkarte öffnen" */
+        .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            min-height: 54px;
-            width: 100%;
-            max-width: 20rem;
-            padding: 14px 28px;
-            background: var(--gold);
-            color: var(--wein);
-            font-family: 'Inter', system-ui, sans-serif;
-            font-weight: 400;
-            font-size: 1.05rem;
-            letter-spacing: 0.01em;
+            background: var(--primary);
+            color: white;
+            padding: 15px 24px;
             text-decoration: none;
             border-radius: 2px;
-            transition: background-color 0.2s;
+            font-weight: bold;
+            white-space: nowrap;
+            transition: opacity 0.3s;
         }
-        .knopf:hover { background: #E2C25A; }
-        .knopf:focus-visible {
-            outline: 2px solid var(--creme);
-            outline-offset: 4px;
-        }
-        .knopf svg { flex: 0 0 auto; }
+        .btn:hover { opacity: 0.85; }
+        .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+        .btn svg { flex: 0 0 auto; color: var(--accent); }
 
-        /* Der goldene Strich füllt sich wie ein Glas, dann geht es zu Google */
-        .auto { display: none; width: 100%; max-width: 20rem; margin-top: 22px; }
+        /* Goldene Linie füllt sich, dann geht es zu Google */
+        .auto { display: none; max-width: 320px; margin: 25px auto 0; }
         .js .auto { display: block; }
 
         .linie {
             height: 2px;
-            background: rgba(212, 175, 55, 0.22);
+            background: #eee;
             overflow: hidden;
         }
         .linie span {
             display: block;
             height: 100%;
             width: 100%;
-            background: var(--gold);
+            background: var(--accent);
             transform: scaleX(0);
             transform-origin: left center;
         }
-        .js .linie span { animation: einschenken var(--wartezeit) cubic-bezier(0.45, 0, 0.25, 1) forwards; }
+        .js .linie span { animation: fuellen var(--wartezeit) linear forwards; }
+        @keyframes fuellen { to { transform: scaleX(1); } }
 
-        @keyframes einschenken {
-            to { transform: scaleX(1); }
-        }
-
-        .hinweis {
-            font-size: 0.875rem;
-            color: var(--creme-gedaempft);
-            margin-top: 12px;
-        }
+        .hinweis { font-size: 0.85rem; color: #888; margin-top: 10px; }
 
         .gruss {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-style: italic;
-            font-weight: 400;
-            font-size: 1.3rem;
-            margin-top: 48px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.15rem;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px dotted #ccc;
         }
 
+        /* Footer wie Startseite */
         footer {
-            padding: 0 24px 28px;
+            background: #fff;
+            padding: 40px 20px;
             text-align: center;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
         }
-        footer a {
-            color: var(--creme-gedaempft);
-            text-decoration: none;
-            margin: 0 10px;
-            padding: 8px 2px;
-            display: inline-block;
+        .footer-nav { margin-top: 20px; }
+        .footer-nav a { color: #888; text-decoration: none; margin: 0 10px; }
+
+        .gruss { text-wrap: balance; }
+
+        /* Sehr kleine Handys: Knopf bleibt einzeilig und passt in die Box */
+        @media (max-width: 360px) {
+            section { padding: 10px 16px 40px; }
+            .btn { font-size: 0.9rem; padding: 15px 16px; }
         }
-        footer a:hover { color: var(--creme); text-decoration: underline; }
-        footer a:focus-visible { outline: 1px solid var(--creme); outline-offset: 2px; }
 
         @media (min-width: 768px) {
-            h1 { font-size: 2.75rem; }
-            .logo { width: 200px; }
+            .page-header { padding: 80px 20px 35px; }
+            .page-header h1 { font-size: 3rem; }
         }
 
         @media (prefers-reduced-motion: reduce) {
             .js .linie span { animation: none; transform: scaleX(1); }
-            .knopf { transition: none; }
+            .btn { transition: none; }
         }
     </style>
 
@@ -201,36 +186,53 @@
 </head>
 <body>
 
-<main>
-    <div class="inhalt">
-        <img src="/bewertung/vino-logo-hell.png" alt="Vino Weinbar" class="logo" width="600" height="253">
-
-        <h1>Danke für Ihren Besuch.</h1>
-        <p class="text">Ihre Meinung hilft uns und anderen Gästen. Wir freuen uns über Ihre Bewertung auf Google.</p>
-
-        <!-- =========================================================
-             ZIEL-LINK: nur hier ändern.
-             Hier steht der Link zur Google-Bewertung. Wenn es einen
-             neuen Link gibt, einfach die Adresse in href ersetzen.
-             Die QR-Codes zeigen auf diese Seite und bleiben gültig.
-             ========================================================= -->
-        <a id="weiter" class="knopf" href="https://share.google/K5OLAeEB1z2iJkrxy">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.94 5.96 6.58.96-4.76 4.64 1.12 6.55L12 17.52l-5.88 3.09 1.12-6.55L2.48 9.42l6.58-.96L12 2.5z"/></svg>
-            Bewertung schreiben
-        </a>
-
-        <div class="auto" aria-live="polite">
-            <div class="linie"><span></span></div>
-            <p class="hinweis">Sie werden gleich zu Google weitergeleitet.</p>
-        </div>
-
-        <p class="gruss">Herzlich, Elfi und Rita</p>
+<nav>
+    <a href="/" class="logo">VINO BASSUM</a>
+    <div class="nav-links">
+        <a href="/">Startseite</a>
+        <a href="/veranstaltungen.html">Veranstaltungen</a>
     </div>
+</nav>
+
+<main>
+    <div class="page-header">
+        <h1>Danke für Ihren Besuch</h1>
+        <p>Ihre Meinung hilft uns und anderen Gästen. Wir freuen uns über Ihre Bewertung auf Google.</p>
+    </div>
+
+    <section>
+        <div class="box">
+            <!-- =========================================================
+                 ZIEL-LINK: nur hier ändern.
+                 Hier steht der Link zur Google-Bewertung. Wenn es einen
+                 neuen Link gibt, einfach die Adresse in href ersetzen.
+                 Die QR-Codes zeigen auf diese Seite und bleiben gültig.
+                 ========================================================= -->
+            <a id="weiter" class="btn" href="https://share.google/K5OLAeEB1z2iJkrxy">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.94 5.96 6.58.96-4.76 4.64 1.12 6.55L12 17.52l-5.88 3.09 1.12-6.55L2.48 9.42l6.58-.96L12 2.5z"/></svg>
+                BEWERTUNG SCHREIBEN
+            </a>
+
+            <div class="auto" aria-live="polite">
+                <div class="linie"><span></span></div>
+                <p class="hinweis">Sie werden gleich zu Google weitergeleitet.</p>
+            </div>
+
+            <p class="gruss">Herzlichen Dank, Elfi und Rita</p>
+        </div>
+    </section>
 </main>
 
 <footer>
-    <a href="/Impressum.html">Impressum</a>
-    <a href="/Datenschutz.html">Datenschutz</a>
+    <p><strong>Vino Weinbar Bassum</strong><br>
+    Sulinger Straße 19A | 27211 Bassum<br>
+    Tel: Elfi 0160 90560321 oder Rita 0152 52583496</p>
+
+    <div class="footer-nav">
+        <a href="/Impressum.html">Impressum</a> |
+        <a href="/Datenschutz.html">Datenschutz</a>
+    </div>
+    <p style="margin-top: 20px; color: #ccc; font-size: 0.7rem;">&copy; 2026 Vino Weinbar. Alle Rechte vorbehalten.</p>
 </footer>
 
 <script>
