@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bewertung | Vino Weinbar Bassum</title>
+    <meta name="description" content="Bewerten Sie die Vino Weinbar Bassum auf Google.">
+    <!-- Diese Seite ist nur für den QR-Code gedacht und soll nicht in Suchmaschinen auftauchen -->
+    <meta name="robots" content="noindex, follow">
+    <meta name="theme-color" content="#4A0E0E">
+    <link rel="icon" href="/favicon-32x32.png" type="image/png">
+
+    <!-- Schriften liegen auf dem eigenen Server: keine Verbindung zu Google Fonts, kein Cookie, kein Tracking -->
+    <link rel="preload" href="/bewertung/playfair-display-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/bewertung/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+    <style>
+        @font-face {
+            font-family: 'Playfair Display';
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: url('/bewertung/playfair-display-latin-600-normal.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Playfair Display';
+            font-style: italic;
+            font-weight: 400;
+            font-display: swap;
+            src: url('/bewertung/playfair-display-latin-400-italic.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('/bewertung/inter-latin-400-normal.woff2') format('woff2');
+        }
+
+        /* Farben wie auf der Hauptseite, hier als dunkle Abendvariante */
+        :root {
+            --wein: #4A0E0E;
+            --creme: #FAF9F6;
+            --gold: #D4AF37;
+            --creme-gedaempft: #CDBDBA;
+            --wartezeit: 2400ms;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { background: var(--wein); }
+
+        body {
+            min-height: 100vh;
+            min-height: 100svh;
+            display: flex;
+            flex-direction: column;
+            background: var(--wein);
+            color: var(--creme);
+            font-family: 'Inter', system-ui, sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 48px 24px 32px;
+        }
+
+        .inhalt {
+            width: 100%;
+            max-width: 26rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo {
+            display: block;
+            width: 168px;
+            height: auto;
+            margin-bottom: 44px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 600;
+            font-size: 2.15rem;
+            line-height: 1.15;
+            letter-spacing: 0.005em;
+            text-wrap: balance;
+            margin-bottom: 16px;
+        }
+
+        .text {
+            font-size: 1.05rem;
+            color: var(--creme-gedaempft);
+            max-width: 22rem;
+            text-wrap: pretty;
+            margin-bottom: 36px;
+        }
+
+        .knopf {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 54px;
+            width: 100%;
+            max-width: 20rem;
+            padding: 14px 28px;
+            background: var(--gold);
+            color: var(--wein);
+            font-family: 'Inter', system-ui, sans-serif;
+            font-weight: 400;
+            font-size: 1.05rem;
+            letter-spacing: 0.01em;
+            text-decoration: none;
+            border-radius: 2px;
+            transition: background-color 0.2s;
+        }
+        .knopf:hover { background: #E2C25A; }
+        .knopf:focus-visible {
+            outline: 2px solid var(--creme);
+            outline-offset: 4px;
+        }
+        .knopf svg { flex: 0 0 auto; }
+
+        /* Der goldene Strich füllt sich wie ein Glas, dann geht es zu Google */
+        .auto { display: none; width: 100%; max-width: 20rem; margin-top: 22px; }
+        .js .auto { display: block; }
+
+        .linie {
+            height: 2px;
+            background: rgba(212, 175, 55, 0.22);
+            overflow: hidden;
+        }
+        .linie span {
+            display: block;
+            height: 100%;
+            width: 100%;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left center;
+        }
+        .js .linie span { animation: einschenken var(--wartezeit) cubic-bezier(0.45, 0, 0.25, 1) forwards; }
+
+        @keyframes einschenken {
+            to { transform: scaleX(1); }
+        }
+
+        .hinweis {
+            font-size: 0.875rem;
+            color: var(--creme-gedaempft);
+            margin-top: 12px;
+        }
+
+        .gruss {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: 1.3rem;
+            margin-top: 48px;
+        }
+
+        footer {
+            padding: 0 24px 28px;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+        footer a {
+            color: var(--creme-gedaempft);
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 8px 2px;
+            display: inline-block;
+        }
+        footer a:hover { color: var(--creme); text-decoration: underline; }
+        footer a:focus-visible { outline: 1px solid var(--creme); outline-offset: 2px; }
+
+        @media (min-width: 768px) {
+            h1 { font-size: 2.75rem; }
+            .logo { width: 200px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .js .linie span { animation: none; transform: scaleX(1); }
+            .knopf { transition: none; }
+        }
+    </style>
+
+    <script>
+        // Kennzeichnet, dass JavaScript läuft: nur dann wird die automatische Weiterleitung angezeigt
+        document.documentElement.className = 'js';
+    </script>
+</head>
+<body>
+
+<main>
+    <div class="inhalt">
+        <img src="/bewertung/vino-logo-hell.png" alt="Vino Weinbar" class="logo" width="600" height="253">
+
+        <h1>Danke für Ihren Besuch.</h1>
+        <p class="text">Ihre Meinung hilft uns und anderen Gästen. Wir freuen uns über Ihre Bewertung auf Google.</p>
+
+        <!-- =========================================================
+             ZIEL-LINK: nur hier ändern.
+             Hier steht der Link zur Google-Bewertung. Wenn es einen
+             neuen Link gibt, einfach die Adresse in href ersetzen.
+             Die QR-Codes zeigen auf diese Seite und bleiben gültig.
+             ========================================================= -->
+        <a id="weiter" class="knopf" href="https://share.google/K5OLAeEB1z2iJkrxy">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.94 5.96 6.58.96-4.76 4.64 1.12 6.55L12 17.52l-5.88 3.09 1.12-6.55L2.48 9.42l6.58-.96L12 2.5z"/></svg>
+            Bewertung schreiben
+        </a>
+
+        <div class="auto" aria-live="polite">
+            <div class="linie"><span></span></div>
+            <p class="hinweis">Sie werden gleich zu Google weitergeleitet.</p>
+        </div>
+
+        <p class="gruss">Herzlich, Elfi und Rita</p>
+    </div>
+</main>
+
+<footer>
+    <a href="/Impressum.html">Impressum</a>
+    <a href="/Datenschutz.html">Datenschutz</a>
+</footer>
+
+<script>
+    (function () {
+        var link = document.getElementById('weiter');
+        var ziel = link.href;
+        var wartezeit = 2400; // gleich lang wie --wartezeit im CSS
+        var erledigt = false;
+
+        function weiter() {
+            if (erledigt) return;
+            erledigt = true;
+            // replace: diese Zwischenseite landet nicht im Verlauf,
+            // "Zurück" führt also nicht in eine Weiterleitungsschleife
+            window.location.replace(ziel);
+        }
+
+        var timer = setTimeout(weiter, wartezeit);
+
+        // Wer selbst tippt, muss nicht warten
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            clearTimeout(timer);
+            weiter();
+        });
+    })();
+</script>
+
+</body>
+</html>
