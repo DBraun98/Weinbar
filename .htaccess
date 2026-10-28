@@ -1,0 +1,11 @@
+# vino-bassum.de auf ALL-INKL (betreut von Peterschun)
+# Die Umleitung von http auf https erledigt das KAS ("SSL erzwingen").
+
+RewriteEngine On
+
+# Hauptadresse ist www.vino-bassum.de (so war es schon bei GitHub Pages)
+RewriteCond %{HTTP_HOST} ^vino-bassum\.de$ [NC]
+RewriteRule ^(.*)$ https://www.vino-bassum.de/$1 [R=301,L]
+
+# Statusdatei des automatischen Uploads nicht ausliefern
+RewriteRule ^\.ftp-deploy-sync-state\.json$ - [F,L]
